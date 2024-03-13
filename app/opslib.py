@@ -77,8 +77,6 @@ def predict(instances):
     #     predictions.append(prediction[0])
 
     # return model.predict(instances)
-    print("ASHOK instances ==> ", instances)
-    print("ASHOK instances ==> ", type(instances)) # <class 'list'>
     pred = model.predict(instances)
 
     return {"number": get_num_class(pred)}
