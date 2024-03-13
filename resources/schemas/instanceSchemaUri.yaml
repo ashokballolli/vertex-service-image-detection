@@ -1,0 +1,15 @@
+openapi: 3.0.0
+info:
+  title: instanceSchemaUri
+  version: 1.0.0
+components:
+  schemas:
+    Instance:
+      type: object
+      properties:
+        instances:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
