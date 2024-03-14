@@ -132,3 +132,26 @@ gcloud ai models upload \
   --container-health-route=/ \
   --container-predict-route=/custom-predict \
   --container-ports=8080
+
+
+
+
+
+output from vertex AI :
+
+{
+ "predictions": [
+   {
+     "number": "7",
+     "version": {
+       "model_id": "test_model_id_123",
+       "version_name": "agb-v1"
+     },
+     "model": "MNIST"
+   }
+ ],
+ "deployedModelId": "6927607151221276672",
+ "model": "projects/737482735608/locations/us-central1/models/4649545502306598912",
+ "modelDisplayName": "num-detect-from-image",
+ "modelVersionId": "1"
+}

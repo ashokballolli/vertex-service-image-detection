@@ -57,7 +57,7 @@ def call_api_local():
 
 
 def call_api_prod():
-    ENDPOINT_ID = "4627864232518483968"
+    ENDPOINT_ID = "7519175193290342400"
     PROJECT_ID = "737482735608"
     prediction_result = predict_custom_trained_model(
         instances=test_data,
