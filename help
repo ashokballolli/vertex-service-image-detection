@@ -47,3 +47,88 @@ components:
             type: array
             items:
               type: number
+
+
+
+
+# FastAPI
+uvicorn app:app --reload
+
+# OpenAPI schema for the POST request
+# input
+
+openapi: 3.0.0
+info:
+  title: instanceSchemaUri
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Instance:
+      type: object
+      required:
+        - mandatory-field
+        - ser-image
+      properties:
+        model:
+          type: string
+          example: "MNIST"
+        mandatory-field:
+          type: string
+          example: "dummy"
+        ser-image:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              example: 0.1
+
+
+# output
+
+openapi: 3.0.0
+info:
+  title: predictionSchemaUri
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Instance:
+      type: object
+      required:
+        - number
+        - version
+      properties:
+        model:
+          type: string
+          example: "MNIST"
+        number:
+          type: integer
+          example: 7
+        version:
+          type: object
+          required:
+            - version_name
+            - model_id
+          properties:
+            version_name:
+              type: string
+              example: "agb-v1"
+            model_id:
+              type: string
+              example: "test_model_id_123"
+
+
+
+# gcloud commands
+
+# NO options to specify the schema files
+# Ref https://cloud.google.com/sdk/gcloud/reference/ai/models/upload
+gcloud ai models upload \
+  --container-image-uri="us-central1-docker.pkg.dev/static-bond-416914/arti-repo-for-vertex/vertex-service-image-detection-fastapi:latest" \
+  --region=us-central1 \
+  --display-name=fast-api-model2 \
+  --container-health-route=/ \
+  --container-predict-route=/custom-predict \
+  --container-ports=8080

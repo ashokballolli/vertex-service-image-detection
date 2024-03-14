@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: instanceSchemaUri
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Instance:
+      type: object
+      required:
+        - mandatory-field
+        - ser-image
+      properties:
+        model:
+          type: string
+          example: "MNIST"
+        mandatory-field:
+          type: string
+          example: "dummy"
+        ser-image:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              example: 0.1

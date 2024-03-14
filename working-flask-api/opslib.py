@@ -79,7 +79,7 @@ def predict(instances):
     # return model.predict(instances)
     pred = model.predict(instances)
 
-    return get_num_class(pred)
+    return {"number": get_num_class(pred)}
 
 
 def predict_local(instances):

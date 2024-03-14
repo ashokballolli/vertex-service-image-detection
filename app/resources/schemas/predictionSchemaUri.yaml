@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: predictionSchemaUri
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Instance:
+      type: object
+      required:
+        - number
+        - version
+      properties:
+        model:
+          type: string
+          example: "MNIST"
+        number:
+          type: integer
+          example: 7
+        version:
+          type: object
+          required:
+            - version_name
+            - model_id
+          properties:
+            version_name:
+              type: string
+              example: "agb-v1"
+            model_id:
+              type: string
+              example: "test_model_id_123"

@@ -1,19 +1,39 @@
-FROM --platform=linux/amd64 python:3.11 AS build
-# FROM python:3.11
+# FROM --platform=linux/amd64 python:3.11 AS build
+# # FROM python:3.11
+#
+# RUN python3 -m pip install --upgrade pip
+#
+# WORKDIR /ws
+#
+# COPY requirements.txt /ws/
+#
+# COPY ./ /ws/
+#
+# RUN pip3 install -r requirements.txt
+#
+# ENTRYPOINT [ "python3" ]
+#
+# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
 
-RUN python3 -m pip install --upgrade pip
 
-WORKDIR /ws
+#
+FROM python:3.11
 
-COPY requirements.txt /ws/
+#
+WORKDIR /code
 
-COPY app/ /ws/
+#
+COPY ./requirements.txt /code/requirements.txt
 
-RUN pip3 install -r requirements.txt
+#
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-ENTRYPOINT [ "python3" ]
+#
+COPY ./app /code/app
 
-CMD [ "app.py" ]
+#
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+
 
 # us-central1-docker.pkg.dev/static-bond-416914/arti-repo-for-vertex
 # gcloud auth configure-docker us-central1-docker.pkg.dev
