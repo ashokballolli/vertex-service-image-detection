@@ -43,7 +43,7 @@ def predict(json_payload: dict):
             }
         }
         logging.info(f"result: {res}")
-        return {"predictions": res}
+        return {"predictions": [res]}
     except Exception as e:
         logging.info(f"Exception: {str(e)}")
         return {"key": "exception", "value": str(e)}
